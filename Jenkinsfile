@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Push to GHCR') {
       steps {
-        sh 'echo $GHCR_PAT | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin'
+        sh 'echo $GHCR_PAT | docker login ghcr.io -u sitharamsenarath --password-stdin'
         sh 'docker push $IMAGE'
       }
     }
