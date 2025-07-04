@@ -60,6 +60,11 @@ CMD ["Rscript", "app.R"]
 
     stage('Push to GHCR') {
       steps {
+        // Debug step: Check if GHCR_PAT is injected correctly
+        sh 'echo "GHCR_PAT is: ${GHCR_PAT:+"[SET]"}"'
+        sh 'echo "GHCR_PAT begins with: ${GHCR_PAT:0:4}"'
+
+        // Login and push
         sh 'echo $GHCR_PAT | docker login ghcr.io -u sitharamsenarath --password-stdin'
         sh 'docker push $IMAGE'
       }
